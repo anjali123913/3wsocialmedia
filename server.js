@@ -24,6 +24,10 @@ connectDB(process.env.MONGO_URI);
 
 app.use("/api/auth", authRoutes);
 app.use("/api/posts", postRoutes);
-
+app.use("\health", (req, res) => {
+  return res.json({
+    message: "ok"
+  })
+})
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on ${PORT}`));
